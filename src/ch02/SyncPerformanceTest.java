@@ -1,4 +1,4 @@
-package ch03;
+package ch02;
 
 class SyncPerformanceTest {
     public static void main(String[] args) {

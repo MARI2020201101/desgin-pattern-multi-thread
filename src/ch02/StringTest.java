@@ -1,4 +1,4 @@
-package ch03;
+package ch02;
 
 class StringTest {
     public static void main(String[] args) {
