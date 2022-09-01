@@ -7,10 +7,12 @@ class Request {
         this.message = message;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public String toString() {
-        return "Request{" +
-                "message='" + message + '\'' +
-                '}';
+        return " "+message+" ";
     }
 }

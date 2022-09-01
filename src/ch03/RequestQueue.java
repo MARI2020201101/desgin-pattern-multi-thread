@@ -8,7 +8,7 @@ class RequestQueue {
     private final Queue<Request> queue = new LinkedList<>();
 
     public synchronized Request getRequest() {
-        if(queue.size() <= 0 ){
+        while(queue.size() <= 0){
             try {
                 System.out.println(Thread.currentThread().getName() + " : Wait Start");
                 wait();
