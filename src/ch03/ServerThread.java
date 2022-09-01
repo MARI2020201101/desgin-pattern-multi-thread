@@ -2,7 +2,7 @@ package ch03;
 
 import java.util.Random;
 
-public class ServerThread extends Thread{
+class ServerThread extends Thread{
     private final RequestQueue queue;
 
     public ServerThread(RequestQueue queue) {
