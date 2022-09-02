@@ -16,7 +16,7 @@ class ClearThread extends Thread{
                 table.clear();
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //interrupt 를 받으면 예외스택트레이스를 print한 후 스레드 자동종료된다.
         }
     }
 }
