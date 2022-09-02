@@ -19,11 +19,13 @@ class Data {
         content = newContent;
         changed = true;
     }
-    public synchronized void save() throws IOException{
+    public void save() throws IOException, InterruptedException {
         if(! changed) {
             System.out.println("** Already Saved!! **");
             return;}
         doSave();
+        Thread.sleep(100); //synchronized 가 아닐경우 이 사이에 끼어들어서 두번 저장해버린다
+        //아직 changed 플래그를 바꾸지 않았으므로..
         changed = false;
     }
 
