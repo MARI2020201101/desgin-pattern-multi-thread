@@ -16,7 +16,7 @@ class MakerThread extends Thread{
     public void run() {
         try {
         while(true){
-            Thread.sleep(random.nextInt(1000));
+            Thread.sleep(random.nextInt(100));
             String cake = "[ Cake No. " + getID() + " made by " + Thread.currentThread().getName() + " ]" ;
             table.put(cake);
         }

@@ -16,7 +16,7 @@ public class EaterThread extends Thread{
         try {
             while(true){
                 table.take();
-                Thread.sleep(random.nextInt(1000));
+                Thread.sleep(random.nextInt(300));
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
