@@ -11,7 +11,7 @@ class Data {
 
     public char[] read() throws InterruptedException {
         lock.readLock();
-        char[] result =(char[]) readWriteStrategy.doRead();
+        char[] result = (char[]) readWriteStrategy.doRead();
         lock.readUnlock();
 
         return result;
