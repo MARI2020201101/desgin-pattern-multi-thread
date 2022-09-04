@@ -17,7 +17,7 @@ class Request {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            Thread.currentThread().interrupt(); //그냥 이런데서 catch 안하고 throw 해도 되는군..
         }
     }
     @Override
