@@ -7,12 +7,11 @@ interface Data {
     String getContent();
 }
 class FutureData implements Data{
-
     private boolean ready = false;
     private RealData realData = null;
     @Override
     public synchronized String getContent() {
-       if(! ready){
+       while(! ready){
            try {
            wait();
            } catch (InterruptedException e) {}
