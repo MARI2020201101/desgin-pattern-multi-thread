@@ -1,4 +1,4 @@
-package ch08.workerthread;
+package ch08.stopworkerthread;
 
 class Channel {
     private static final int MAX_REQUEST = 100;
@@ -25,11 +25,18 @@ class Channel {
             workerThreads[i].start();
         }
     }
+    public void stopAllWorkers(){
+        for(int i = 0; i < workerThreads.length; i++) {
+            workerThreads[i].interrupt();
+        }
+    }
     public synchronized void putRequest(Request request){
         while(count >= MAX_REQUEST){
             try {
                 wait();
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
         requests[tail] = request;
         tail = (tail+1) % MAX_REQUEST;
@@ -40,7 +47,9 @@ class Channel {
         while(count <= 0){
             try {
                 wait();
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
         Request request = requests[head];
         head = (head+1) % MAX_REQUEST;

@@ -1,4 +1,4 @@
-package ch08.workerthread;
+package ch08.stopworkerthread;
 
 import java.util.Random;
 
@@ -14,14 +14,14 @@ class WorkerThread extends Thread{
 
     @Override
     public void run() {
+        try {
         while(true){
             Request request = channel.takeRequest();
             request.execute();
-            try {
-                Thread.sleep(random.nextInt(1000));
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Thread.sleep(random.nextInt(1000));
+        }
+        } catch (InterruptedException e) {
+            System.out.println(" # "+ Thread.currentThread().getName() + " Stop Working....");
         }
     }
 }
