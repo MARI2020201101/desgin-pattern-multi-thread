@@ -4,23 +4,31 @@ import java.util.Arrays;
 import java.util.Random;
 
 interface Data {
-    String getContent();
+    String getContent() throws Exception;
 }
 class FutureData implements Data{
     private boolean ready = false;
     private RealData realData = null;
+    private Exception exception = null;
     @Override
-    public synchronized String getContent() {
+    public synchronized String getContent() throws Exception{
        while(! ready){
            try {
            wait();
            } catch (InterruptedException e) {}
        }
+        if(exception!= null) throw exception;
         return realData.getContent();
     }
     public synchronized void setContent(RealData data){
         if(ready) return;
         this.realData = data;
+        this.ready = true;
+        notifyAll();
+    }
+    public synchronized void setException(Throwable exception){
+        if(ready) return;
+        this.exception = new IllegalArgumentException(exception);
         this.ready = true;
         notifyAll();
     }

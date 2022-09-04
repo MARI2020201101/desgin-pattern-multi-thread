@@ -16,7 +16,7 @@ class Main {
 
         while(contentIsNull(content1) || contentIsNull(content2) || contentIsNull(content3)){
             System.out.println("Main Waiting content...");
-            Thread.sleep(1000);
+            Thread.sleep(100);
         }
         saveToFile(fileName1, content1);
         saveToFile(fileName2, content2);

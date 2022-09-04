@@ -2,7 +2,6 @@ package ch09.networkfuture;
 
 import java.io.DataInputStream;
 import java.net.URL;
-import java.util.Arrays;
 
 interface Content {
     byte[] getBytes();
@@ -21,13 +20,13 @@ class SyncContent implements Content{
                     byte[] newBuff = new byte[buffer.length * 2];
                     System.arraycopy(buffer,0,newBuff,0, index);
                     buffer = newBuff;
+                    Thread.sleep(1000);
                 }
                 buffer[index++] =(byte)c;
             }
             in.close();
             contentBytes = new byte[index];
             System.arraycopy(buffer,0,contentBytes,0, index);
-
         } catch (Exception e) {}
     }
     SyncContent(String urlStr){

@@ -1,7 +1,7 @@
 package ch09.future;
 
 class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         System.out.println("main START");
         Host host = new Host();
         Data data1 = host.request(10, 'A');
@@ -9,7 +9,7 @@ class Main {
         Data data3 = host.request(30, 'C');
 
         System.out.println("main do other job...");
-        Thread.sleep(6000);
+        Thread.sleep(3000);
         System.out.println("main end other job");
 
         System.out.println("data1 = " + data1.getContent());
