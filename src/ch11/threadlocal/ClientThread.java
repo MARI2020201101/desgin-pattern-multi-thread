@@ -1,7 +1,5 @@
 package ch11.threadlocal;
 
-import java.io.IOException;
-
 class ClientThread extends Thread{
     private char name;
     private final Log log;
@@ -12,21 +10,11 @@ class ClientThread extends Thread{
     }
     @Override
     public void run() {
-
-        for (int i = 0; i < 10; i++) {
-            try {
-                log.println(name + i + "");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {}
-        }
         try {
-            log.close();
-        } catch (IOException e) {
-        }
-
+            for (int i = 0; i < 10; i++) {
+                log.println(name + i + "");
+                Thread.sleep(100);
+            }
+        } catch (Exception e) {}
     }
 }
