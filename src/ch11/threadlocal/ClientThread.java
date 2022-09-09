@@ -7,6 +7,11 @@ class ClientThread extends Thread{
         super(name);
         this.name = name.charAt(0);
         this.log = new Log();
+//        try {
+//            log.println(name);
+//        } catch (IOException e) {
+//
+//        }
     }
     @Override
     public void run() {
